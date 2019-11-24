@@ -1,6 +1,7 @@
 import { DateFactModel } from './../models/DateFactModel';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MathFactModel } from 'src/models/MathFactModel';
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +19,6 @@ export class NumbersApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  // public getDateFact() {
-  //   return fetch('https://numbersapi.p.rapidapi.com/6/21/date', {
-  //     headers: {
-  //       'x-rapidapi-host': 'numbersapi.p.rapidapi.com',
-  //       'x-rapidapi-key': 'a79227b206mshbacda42483d6dafp1ae1e2jsnb3628e51e5ff'
-  //     }
-  //   }).then(res => res.text());
-  // }
-
   public getDateFact(dateFactModel: DateFactModel) {
     return this.httpClient.get(`https://numbersapi.p.rapidapi.com/${dateFactModel.month}/${dateFactModel.day}/date`, {
       responseType: 'text',
@@ -37,7 +29,12 @@ export class NumbersApiService {
     });
   }
 
-  public getMathFact() {
-    return this.httpClient.get(`https://numbersapi.p.rapidapi.com/5/6/date`, this.httpOptions);
+  public getMathFact(mathFactModel: MathFactModel) {
+    return fetch(`https://numbersapi.p.rapidapi.com/${mathFactModel.number}/math`, {
+      headers: {
+        'x-rapidapi-host': 'numbersapi.p.rapidapi.com',
+        'x-rapidapi-key': 'a79227b206mshbacda42483d6dafp1ae1e2jsnb3628e51e5ff'
+      }
+    });
   }
 }

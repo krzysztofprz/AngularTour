@@ -1,3 +1,4 @@
+import { MathFactsComponent } from './../content/math-facts/math-facts.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DateFactsComponent } from './../content/date-facts/date-facts.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,6 +13,7 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent,
     DateFactsComponent,
+    MathFactsComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,6 +21,7 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     NgbModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [

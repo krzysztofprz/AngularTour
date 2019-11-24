@@ -33,18 +33,12 @@ export class DateFactsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // using fetch to consume api
-    // this.dateFact = this.numbersApiService.getDateFact().then(res => this.dateFact = res);
-
-    // using httpClient and observable to consume api
-    // this.numbersApiService.getDateFact().subscribe((data) => {
-    //   this.dateFact = data;
-    // });
   }
 
   onSubmit() {
     let dateFactModel: DateFactModel = { day: +this.selectedDay, month: this.months.find(x => x.name === this.selectedMonth).id };
-    console.log(dateFactModel);
+
+    // using using httpClient and observable to consume api by subscribing
     this.numbersApiService.getDateFact(dateFactModel).subscribe((data) => {
       this.dateFact = data;
     });
