@@ -11,42 +11,30 @@ import { Component, OnInit, NgModule } from '@angular/core';
 
 export class MathFactsComponent implements OnInit {
 
-  mathFactForm: FormGroup;
-  numberControl: FormControl;
-  fragmentControl: FormControl;
+  mathFact = 'Here will be fact about math :)';
 
-  mathFact;
-  mathFactModel: MathFactModel;
+  mathFactForm = this.formBuilder.group({
+    number: new FormControl('', Validators.required),
+    fragment: new FormControl('')
+  });
 
-  // regex = new RegExp('^[0-9]{1,5}');
-  regex: RegExp = /^[0-9]{1,5}/;
-
-  get number() {
-    return this.mathFactForm.get('number');
-  }
-
-  get fragment() {
-    return this.mathFactForm.get('fragment');
-  }
+  get number() { return this.mathFactForm.get('number'); }
+  get fragment() { return this.mathFactForm.get('fragment'); }
 
   constructor(private numbersApiService: NumbersApiService,
     private formBuilder: FormBuilder) {
-    this.mathFactForm = this.formBuilder.group({
-      number: ['', Validators.required],
-      fragment: ''
-    });
   }
 
   ngOnInit() {
   }
 
-  onSubmit(mathFactModel) {
+  onSubmit() {
     // using fetch to consume api
-    // this.numbersApiService.getMathFact(mathFactModel).then(response => response.text())
-    //   .then(data => {
-    //     this.mathFact = data;
-    //   });
-    console.log(mathFactModel);
+    this.numbersApiService.getMathFact(this.mathFactForm.value).then(response => response.text())
+      .then(data => {
+        this.mathFact = data;
+      });
+
     console.log(this.mathFactForm.value);
   }
 }

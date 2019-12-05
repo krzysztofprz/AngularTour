@@ -23,7 +23,8 @@
     <form #dateFactForm="ngForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="month">Month</label>
-        <select (change)="updateDates(model.month)" class="form-control" id="month" [(ngModel)]="model.month" name="month" #name="ngModel" required>
+        <select (change)="updateDates(model.month)" class="form-control" id="month" [(ngModel)]="model.month"
+          name="month" #name="ngModel" required>
           <option *ngFor="let m of months" [value]="m.name">{{m.name}}</option>
         </select>
       </div>
@@ -39,3 +40,4 @@
       <button type="submit" class="btn btn-success" [disabled]="!dateFactForm.form.valid">Submit</button>
     </form>
   </div>
+</div>

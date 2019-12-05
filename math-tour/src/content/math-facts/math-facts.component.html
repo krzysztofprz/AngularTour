@@ -3,8 +3,7 @@
   <p>Using Reactive Forms</p>
 </div>
 
-<div>
-
+<div class="container">
   <div class="row">
     <hr />
 
@@ -14,26 +13,25 @@
 
     <hr />
   </div>
-
 </div>
 
 <div class="container">
   <div class="row">
-    <form [formGroup]="mathFactForm" (ngSubmit)="onSubmit(mathFactForm)">
-      {{mathFactForm.status}}
-      <label>
-        Number:
-        <input id="number" type="text" formControlName="number" required>
-      </label>
+    <form [formGroup]="mathFactForm" (ngSubmit)="onSubmit()">
+      <div class="form-control">
+        <label>Number:
+          <input type="text" formControlName="number" required>
+        </label>
+      </div>
       <div *ngIf="number.invalid && (number.dirty || number.touched)" class="alert alert-danger">
         <div *ngIf="number.errors.required">
           Number is required.
         </div>
       </div>
-      <label>
-        Fragment:
+      <div class="form-control">
+        <label>Fragment:</label>
         <input type="text" formControlName="fragment">
-      </label>
+      </div>
       <button type="submit" [disabled]="!mathFactForm.valid">Submit</button>
     </form>
   </div>

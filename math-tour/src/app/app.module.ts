@@ -1,4 +1,3 @@
-import { DaysPipePipe } from './../content/utils/days-pipe.pipe';
 import { MathFactsComponent } from './../content/math-facts/math-facts.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DateFactsComponent } from './../content/date-facts/date-facts.component';
@@ -15,7 +14,6 @@ import { AppComponent } from './app.component';
     AppComponent,
     DateFactsComponent,
     MathFactsComponent,
-    DaysPipePipe,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +23,7 @@ import { AppComponent } from './app.component';
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [DaysPipePipe],
+  providers: [],
   bootstrap: [
     AppComponent
   ]
