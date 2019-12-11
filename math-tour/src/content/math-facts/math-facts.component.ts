@@ -34,7 +34,5 @@ export class MathFactsComponent implements OnInit {
       .then(data => {
         this.mathFact = data;
       });
-
-    console.log(this.mathFactForm.value);
   }
 }

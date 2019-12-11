@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-date-facts',
   templateUrl: './date-facts.component.html',
-  styleUrls: ['./date-facts.component.css']
+  styleUrls: ['./date-facts.component.less']
 })
 
 export class DateFactsComponent implements OnInit {
@@ -32,8 +32,13 @@ export class DateFactsComponent implements OnInit {
   }
 
   updateDates(m) {
-    if (m === 'May') {
-      this.days = Array.from({ length: 5 }, (v, k) => k + 1);
+    const thirtyDays = ['April', 'June', 'September', 'November'];
+    const twentyEightDays = ['February'];
+
+    if (thirtyDays.includes(m)) {
+      this.days = Array.from({ length: 30 }, (v, k) => k + 1);
+    } else if (twentyEightDays.includes(m)) {
+      this.days = Array.from({ length: 29 }, (v, k) => k + 1);
     } else {
       this.days = Array.from({ length: 31 }, (v, k) => k + 1);
     }

@@ -2,42 +2,53 @@
   <h4>
     Facts about Dates
   </h4>
+  <p>
+    Using Template-driven Forms
+  </p>
 </div>
 
 <div class="container">
 
   <hr />
 
-  <div class="row">
+  <div>
     <p>
       {{dateFact}}
     </p>
-    <p *ngFor="let i of [].constructor(1);">
+    <p *ngFor="let i of [].constructor(2);">
       {{diagnostic}}
     </p>
   </div>
 
   <hr />
+</div>
 
-  <div class="container">
-    <form #dateFactForm="ngForm" (ngSubmit)="onSubmit()">
+<div class="container">
+  <form #dateFactForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-3">
       <div class="form-group">
         <label for="month">Month</label>
         <select (change)="updateDates(model.month)" class="form-control" id="month" [(ngModel)]="model.month"
           name="month" #name="ngModel" required>
-          <option *ngFor="let m of months" [value]="m.name">{{m.name}}</option>
+          <option *ngFor="let m of months" [value]="m.id">{{m.name}}</option>
         </select>
+        <small id="monthHelp" class="form-text text-muted">Provide a month to get a fact</small>
       </div>
+    </div>
+    <div class="col-md-3">
       <div class="form-group">
         <label for="day">Day</label>
-        <select class="form-control" id="day" [(ngModel)]="model.day" name="day" #day="ngModel" required>
+        <select class="form-control" id="day" [(ngModel)]="model.day" name="day" #day="ngModel"
+          [disabled]="!model.month" required>
           <option *ngFor="let d of days" [value]="d">{{d}}</option>
         </select>
         <div [hidden]="day.valid || !day.pristine" class="alert alert-danger">
           Day is required
         </div>
       </div>
+    </div>
+    <div class="col-md-3">
       <button type="submit" class="btn btn-success" [disabled]="!dateFactForm.form.valid">Submit</button>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>

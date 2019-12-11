@@ -140,5 +140,10 @@
       }
     }
   },
-  "defaultProject": "math-tour"
+  "defaultProject": "math-tour",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "less"
+    }
+  }
 }
